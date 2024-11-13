@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* HEADER-INICIO */
+.container {
+    display: flex;
+}
+
+.navbar-brand {
+    font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    filter: drop-shadow(3px 3px 3px rgb(170, 7, 56));
+}
+
+.nav-link {
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    background-color: #2984fa;
+    border-radius: 3rem;
+    transition-duration: 0.9s;
+}
+
+.dropdown-item {
+    color: white;
+  }
+
+.dropdown-item:hover {
+    background-color: transparent !important;
+    color: #ff8484;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 991px) {
+    .nav-link {
+        width: 90px;
+        border-radius: 2rem;
+        transition-duration: 0.9s;
+    }
+
+    .nav-link:hover {
+        color: #ffffff;
+    }
+}

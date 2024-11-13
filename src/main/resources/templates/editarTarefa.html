@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Editar Tarefa</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Tarefas para Desenvolvedores</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/listarTarefas">Listar tarefas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Editar tarefa</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <span th:text="${successMessage}">Tarefa alterada com sucesso!</span>
+    </div>
+
+    <h2>Editar Tarefa</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="datacriacao" class="form-label">Data de criação</label>
+            <input type="date" class="form-control" id="datacriacao" name="datacriacao" th:value="${tarefa.datacriacao}"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" th:value="${tarefa.titulo}" required>
+        </div>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" th:value="${tarefa.descricao}"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status" required>
+                <option value="Pendente" th:selected="${tarefa.status == 'Pendente'}">Pendente</option>
+                <option value="Concluído" th:selected="${tarefa.status == 'Concluído'}">Concluído</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar alterações</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
