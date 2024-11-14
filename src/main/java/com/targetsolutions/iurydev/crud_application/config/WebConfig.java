@@ -16,6 +16,9 @@ public class WebConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/tarefa");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("28282828");
         return dataSource;
     }
 
