@@ -1,3 +1,4 @@
+/*
 package com.targetsolutions.iurydev.crud_application.config;
 
 import org.springframework.context.annotation.Bean;
@@ -33,3 +34,4 @@ public class WebConfig {
         return adapter;
     }
 }
+*/
