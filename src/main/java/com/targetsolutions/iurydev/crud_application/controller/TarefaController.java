@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("api/tarefas")
 public class TarefaController {
 
     @Autowired

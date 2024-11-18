@@ -23,4 +23,6 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
+ENV SPRING_PROFILES_ACTIVE=prod
+
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.targetsolutions.iurydev.crud_application.CrudApplication"]
