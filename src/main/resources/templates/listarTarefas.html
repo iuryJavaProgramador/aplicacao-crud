@@ -22,30 +22,29 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="alert alert-danger" th:if="${errorMessage != null}" th:text="${errorMessage}" id="alertError"></div>
         <div class="container container-fluid p-4">
-            <a class="navbar-brand" href="/">Tarefa para Devs</a>
+            <a class="navbar-brand" href="">Tarefa para Devs</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#vagas">Listar tarefa</a></li>
-
-                    <form action="/buscarTarefa" method="get">
-                        <li class="nav-item"><a class="nav-link" href="#buscar-tarefa">Buscar tarefa</a>
-                            <input type="text" id="id" name="id" placeholder="Digite o ID da tarefa">
-                            <button type="submit">Buscar</button>
-                        </li>
-                    </form>
+                    <li class="nav-item"><a class="nav-link me-4" aria-current="page" href="#">Home</a></li>
+                    <li class="nav-item">
+                        <form class="d-flex" action="/buscarTarefa" method="get">
+                            <input type="text" id="id" name="id" class="form-control me-2 w-auto" placeholder="Digite o ID da tarefa">
+                            <button type="submit" class="btn btn-outline-light">Buscar</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 
-<h2 class="text-center">Gestão de tarefas</h2>
+<h2 class="text-center" id="home">Gestão de tarefas</h2>
 <div class="container container-tarefa">
     <form method="post" action="/cadastrarTarefa" class="row g-3">
         <div class="col-12 mb-3">
@@ -68,10 +67,6 @@
                 <option value="Concluído">Concluído</option>
             </select>
         </div>
-        <div class="col-12 mb-3">
-            <label for="arquivos" class="form-label">Anexar arquivo</label>
-            <input type="file" class="form-control" id="arquivos" name="arquivos">
-        </div>
         <div class="col-12 d-flex justify-content-end">
             <button id="botao-enviar" type="submit" class="btn btn-primary">Enviar tarefa</button>
         </div>
@@ -79,12 +74,7 @@
 </div>
 
 <br>
-<div id="vagas" class="container container-recebe">
-
-    <div th:if="${successMessage}" class="alert alert-success" role="alert" id="alertSuccess">
-        <span th:text="${successMessage}">Tarefa alterada com sucesso!</span>
-    </div>
-
+<div class="container container-recebe">
     <table class="dataTable table table-striped" th:if="${tarefas != null && !tarefas.isEmpty()}">
         <thead>
         <tr>
@@ -110,25 +100,19 @@
         </tr>
         </tbody>
     </table>
+    <div th:if="${successMessage}" id="successMessage" class="alert alert-success" role="alert">
+        <span th:text="${successMessage}"></span>
+    </div>
+    <div th:if="${messageExcluir}" id="messageExcluir" class="alert alert-success" role="alert">
+        <span th:text="${messageExcluir}"></span>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 <script th:src="@{/jquery-3.6.0-dist/jquery-3.6.0.min.js}"></script>
-<script th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/index.js}"></script>
-
-<script>
-    const successAlert = document.getElementById('alertSuccess');
-
-    if (successAlert) {
-        // Esconde o alerta após 5 segundos (5000 milissegundos)
-        setTimeout(() => {
-            successAlert.style.display = 'none';
-        }, 5000); // 5000 milissegundos = 5 segundos
-    }
-</script>
 
 </body>
 </html>

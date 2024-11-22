@@ -37,15 +37,14 @@
 <script>
 
     window.onload = function() {
-      const alertElement = document.querySelector('.alert'); // Agora selecionamos o primeiro alerta encontrado
+      const alertElement = document.querySelector('.alert');
 
       if (alertElement) {
-        // Exibe o alerta e aguarda 5 segundos para removê-lo
         setTimeout(function() {
           alertElement.style.transition = "opacity 0.5s ease";
-          alertElement.style.opacity = "0"; // Transição de opacidade
-          setTimeout(() => alertElement.remove(), 500); // Remove o alerta após a animação
-        }, 5000); // O alerta ficará visível por 5 segundos
+          alertElement.style.opacity = "0";
+          setTimeout(() => alertElement.remove(), 500);
+        }, 5000);
       }
     }
 </script>

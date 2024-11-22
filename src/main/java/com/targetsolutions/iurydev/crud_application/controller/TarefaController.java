@@ -42,10 +42,11 @@ public class TarefaController {
             model.addAttribute("successMessage", "Tarefa encontrada com sucesso!");
             return "resultadoBusca";
         } else {
-            redirectAttributes.addFlashAttribute("message", "Tarefa não encontrada!");
-            return "redirect:/listarTarefas";
+            redirectAttributes.addFlashAttribute("errorMessage", "Tarefa não encontrada!");
+            return "redirect:/listarTarefas"; // Redirecione para a página de listagem de tarefas
         }
     }
+
 
     @RequestMapping("/listarTarefas")
     public String listarTarefas(Model model) {
@@ -86,7 +87,7 @@ public class TarefaController {
     public String deletarTarefa(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             tarefaService.deletarTarefa(id);
-            redirectAttributes.addFlashAttribute("message", "Tarefa excluída com sucesso!");
+            redirectAttributes.addFlashAttribute("messageExcluir", "Tarefa excluída com sucesso!");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("message", "Erro ao excluir tarefa.");
         }
